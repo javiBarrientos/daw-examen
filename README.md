@@ -15,3 +15,4 @@ __La imagen esta guardada en el servidor en una carpeta llamada uploads, lo que 
 __La podemos recuperar accediendo a la carpeta uploads__
 
 6- Actulizar imagen
+__Dentro del fichero update linea 30 añadimos la imagen para el select de la query, linea 46 creamos la row, linea 66 update de la query, linea 77 metodo post de la imagen, linea 83 añadir el parametro de la imagen, en el formulario añadir tr de input__
