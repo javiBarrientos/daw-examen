@@ -27,7 +27,7 @@ include 'config/database.php';
 // read current record's data
 try {
     // prepare select query
-    $query = "SELECT id, name, description, price FROM products WHERE id = ? LIMIT 0,1";
+    $query = "SELECT id, name, description, price, image FROM products WHERE id = ? LIMIT 0,1";
     $stmt = $con->prepare($query);
 
     // this is the first question mark
@@ -43,6 +43,7 @@ try {
     $name = $row['name'];
     $description = $row['description'];
     $price = $row['price'];
+    $image = $row['image'];
 }
 
 // show error
@@ -63,7 +64,7 @@ if ($_POST) {
         // in this case, it seemed like we have so many fields to pass and
         // it is better to label them and not use question marks
         $query = "UPDATE products
-                     SET name=:name, description=:description, price=:price
+                     SET name=:name, description=:description, price=:price, image=:image
                      WHERE id = :id";
 
         // prepare query for excecution
@@ -73,11 +74,13 @@ if ($_POST) {
         $name = htmlspecialchars(strip_tags($_POST['name']));
         $description = htmlspecialchars(strip_tags($_POST['description']));
         $price = htmlspecialchars(strip_tags($_POST['price']));
+        $image = htmlspecialchars(strip_tags($_POST['image']));
 
         // bind the parameters
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':image', $image);
         $stmt->bindParam(':id', $id);
 
         // Execute the query
@@ -112,6 +115,10 @@ if ($_POST) {
             <td>Price</td>
             <td><input type='text' name='price' value="<?php echo htmlspecialchars($price, ENT_QUOTES); ?>" class='form-control' /></td>
         </tr>
+        <tr>
+	<td>Photo</td>
+	<td><input type="file" name="image" /></td>
+</tr>
         <tr>
             <td></td>
             <td>
