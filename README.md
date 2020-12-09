@@ -6,10 +6,15 @@ Directorio remoto
 http://javiphpsite.sytes.net/php-beginner-crud-level-1/
 
 4- Modificar para mostrar dolar, listado, read_one
+
+
 `index.php line 91 $ before {$price}`
+
+
 `read_one line 68 $ before <?php`
 
 5- Explica como se guarda la imagen de un producto, formato, comprobaciones, que se guarda, donde esta.
+
 
 __El formato del campo es blob__
 
